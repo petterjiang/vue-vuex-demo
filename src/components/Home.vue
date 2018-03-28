@@ -3,7 +3,7 @@
     {{mag}}
     <div>===============================</div>
     搜索匹配姓名
-    <Input type='text' v-model='name'></Input>
+    <Input type='text' v-model='name' />
     <div v-if='userMsg==""'>暂无数据</div>
     <transition-group appear enter-active-class="bounceInLeft animated"  leave-active-class="bounceOutRight animated" tag='div'>
     <div v-if='seachName' :key='index' v-for='(msg,index) in seachName'>
@@ -16,7 +16,7 @@
     	</ul>
     </div>
     </transition-group>
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -47,12 +47,18 @@ export default {
   created(){
   	// 向jsonplaceholder发送 get 请求
 	axios({
-	  method: 'get',
-	  url: 'http://jsonplaceholder.typicode.com/users'
-	}).then(resp => {
-		//请求完成后数据保存到store中
-		this.setMsg(resp.data)
-	});
+    method: 'get',
+    url: 'http://jsonplaceholder.typicode.com/users'
+  }).then(resp => {
+    //请求完成后数据保存到store中
+    this.setMsg(resp.data)
+    return axios({
+              method: 'get',
+              url: 'http://jsonplaceholder.typicode.com/users'
+            })
+  }).then(res => {
+      console.log(res.status)
+  });
   },
   methods:{
     //解构store中的action

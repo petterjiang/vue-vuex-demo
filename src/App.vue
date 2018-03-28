@@ -23,5 +23,5 @@ export default {
   width:100%;
 }
 
-li{    list-style:none;}
+li{ list-style:none;}
 </style>

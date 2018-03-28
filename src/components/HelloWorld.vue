@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>      
+    <div>
     </div>
     <div v-html='abb'>
     </div>
@@ -15,8 +15,8 @@
 
         <p>=======</p>
         <h3>填写姓名，年龄提交到store保存</h3>
-        <Input v-model='person.name' placeholder='请输入姓名'></Input>
-        <Input v-model='person.age' placeholder='请输入年龄'></Input>
+        <Input v-model='person.name' placeholder='请输入姓名' />
+        <Input v-model='person.age' placeholder='请输入年龄' />
         <Button type="primary" @click='setMsg'>提交</Button>
         <div>
             store中存储的名字：{{myName}}<br>
@@ -25,7 +25,7 @@
             我将要修改的年龄：{{person.age}}
         </div>
     </div>
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -45,6 +45,9 @@ export default {
     abb: function (){
       return `${this.msg}  <div>姓名：jiangweijia</div>`
     },
+//    count(){
+//      return this.$store.state.count.count
+//    },
     ...mapState({
       count:state => state.count.count,
       myName:state => state.setMsg.name,
@@ -52,6 +55,9 @@ export default {
     })
   },
   methods:{
+//    addo (){
+//      this.$store.dispatch('increment');
+//    },
     ...mapActions({
       addo:'increment', // 将 `this.add()` 映射为 `this.$store.dispatch('increment')`
       decrement:'decrement',
